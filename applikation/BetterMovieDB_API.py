@@ -8,10 +8,13 @@ bearer_token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2OTQ2ZjBkMzg2YzkzZjAzODJkZjkxNjA
 # Define the URL for the request
 base_url = 'https://api.themoviedb.org/3/search/movie'
 
+FilmName = 'Interstellar'
+
 # Define the parameters for the request
 params = {
     'api_key': api_key,
-    'query': 'interstellar'  # Replace with the name of the movie you're searching for
+    # Replace with the name of the movie you're searching for
+    f'query': {FilmName}
 }
 # Define the headers for the request
 headers = {
@@ -19,7 +22,7 @@ headers = {
 }
 
 # Make the GET request
-response = requests.get(base_url, params=params)
+response = requests.get(base_url, params=params, headers=headers)
 
 # Print the response
 print(json.dumps(response.json(), ensure_ascii=False).encode('utf8'))
