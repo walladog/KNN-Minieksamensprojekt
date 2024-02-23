@@ -4,9 +4,9 @@ const readline = require('readline');
 // Define the options for the request
 const options = {
   method: 'GET',
-  url: 'https://urban-dictionary7.p.rapidapi.com/v0/define',
+  url: '',
   headers: {
-    'API-KEY': '',
+    'API-KEY': '6946f0d386c93f0382df916068e76b28',
     'API-Host': ''
   }
 };
