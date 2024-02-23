@@ -52,7 +52,6 @@ def bubbleSort(A):
                 tempAj = A[j]
                 A[j] = A[j+1]
                 A[j+1] = tempAj
-
     return A
 
 
@@ -84,22 +83,22 @@ def hvaFarve(points, testpunkt, k):
         print("hov du, k må ikke være større end mængden af naboer")
         return
     # testpunktets k nærmeste naboer findes.
-    bob = nærmesteKPunkter(points, testpunkt, k)
+    kNearest = nærmesteKPunkter(points, testpunkt, k)
     # print(f"bob er {bob}")
     # dictionariet bobdict oprettes
-    bobdict = {}
+    kNearestDict = {}
     # for alle k naboer køres dette loop.
     for i in range(0, k):
         # Vi forsøger at inkrementere værdien til keyen bob[i][1] (bob[i]'s farve) i bobdict.
         try:
-            bobdict[bob[i][1]] += 1
+            kNearestDict[kNearest[i][1]] += 1
         # Hvis det ikke er muligt (f.eks. hvis den key ikke eksisterer), opretter vi en key med det navn.
         except:
-            bobdict[bob[i][1]] = 1
+            kNearestDict[kNearest[i][1]] = 1
 
-    farve = list(bobdict.keys())[0]
-    for key in bobdict.keys():
-        if bobdict[key] > bobdict[farve]:
+    farve = list(kNearestDict.keys())[0]
+    for key in kNearestDict.keys():
+        if kNearestDict[key] > kNearestDict[farve]:
             farve = key
     return farve
 
