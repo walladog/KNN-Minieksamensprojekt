@@ -4,8 +4,11 @@ import requests
 api_key = '6946f0d386c93f0382df916068e76b28'
 bearer_token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2OTQ2ZjBkMzg2YzkzZjAzODJkZjkxNjA2OGU3NmIyOCIsInN1YiI6IjY1ZDg1ZWMyMTQ5NTY1MDE3YmY1ZWVmYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-Q1ebIcJom7_6odxlkg5yNqXH3vacAQUUukPz9N3Zkk'
 
+film_id = 13
+
+
 # Define the URL for the request
-base_url = 'https://api.themoviedb.org/3/movie/157336'
+base_url = f'https://api.themoviedb.org/3/movie/{film_id}'
 
 # Define the parameters for the request
 params = {
