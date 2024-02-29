@@ -8,7 +8,7 @@ bearer_token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2OTQ2ZjBkMzg2YzkzZjAzODJkZjkxNjA
 # Define the URL for the request
 base_url = 'https://api.themoviedb.org/3/search/movie'
 
-FilmName = 'Interstellar'
+FilmName = 'forest gump'
 
 # Define the parameters for the request
 params = {
