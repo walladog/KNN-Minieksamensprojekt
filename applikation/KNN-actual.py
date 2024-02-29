@@ -1,4 +1,7 @@
+import BetterMovieDB_API
+
 genreDict = {}
+
 
 class Film:
     def __init__(self, name, genres, rating, popularity):
@@ -29,3 +32,4 @@ class Film:
     def genreDistance(movie1Genres,movie2Genres):
         return
 
+film = Film(response.json['name'])
