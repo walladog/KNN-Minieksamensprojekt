@@ -4,8 +4,8 @@ class FilmListeKlasse:
         self.genreDict = {}
         self.filmListe = []
 
-    def addFilm(self,name,genres,rating,popularity):
-        self.filmListe.append(Film(name,genres,rating,popularity))
+    def addFilm(self,name,genres,rating,popularity,kanLide):
+        self.filmListe.append(Film(name,genres,rating,popularity,kanLide))
         self.addGenresToGenreDict(self.filmListe[-1])
 
 
@@ -33,13 +33,14 @@ class FilmListeKlasse:
 
 
 class Film:
-    def __init__(self, name, genres, rating, popularity):
+    def __init__(self, name, genres, rating, popularity,kanLide):
         self.name = name #Filmens navn
         self.rawGenres = genres #liste over genrer denne film har.
         self.rawGenresDict = {}
         self.refinedGenres = {} #dict over alle genrer vi har set, samt om denne film har dem
         self.rating = rating
         self.pop = popularity
+        self.kanLide = kanLide
         
 
 
