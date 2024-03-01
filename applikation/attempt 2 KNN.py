@@ -35,6 +35,8 @@ def distance(point1, point2):
     x2 = point2[0]
     y2 = point2[1]
     return np.sqrt((x1-x2)**2 + (y1-y2)**2)
+    #return np.sqrt(np.sum((point1 - point2)**2))
+
 
 
 def allDist(points, testpunkt):

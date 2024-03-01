@@ -9,8 +9,6 @@ class FilmListeKlasse:
         self.addGenresToGenreDict(self.filmListe[-1])
 
 
-
-
     def addGenresToGenreDict(self,film):
         for genre_id in film.rawGenres:
             if str(genre_id) in self.genreDict.keys():
@@ -19,10 +17,18 @@ class FilmListeKlasse:
                 self.genreDict[str(genre_id)] = 0
     
     def generateRefinedGenres(self):
-        for film in self.filmListe:
-            film.refinedGenres = self.genreDict
-            for genre in film.rawGenres:
-                film.refinedGenres[genre['name']] = 1
+        # for film in self.filmListe:
+        #     film.refinedGenres = self.genreDict
+        #     for genre in film.rawGenres:
+        #         print(genre)
+        #         film.refinedGenres[str(genre)] = 1
+        for genre in self.genreDict.keys():
+            for film in self.filmListe:
+                if int(genre) in film.rawGenres:
+                    film.refinedGenres[genre] = 1
+                else:
+                    film.refinedGenres[genre] = 0
+
                 
 
 
