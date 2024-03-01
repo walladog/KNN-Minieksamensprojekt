@@ -7,12 +7,13 @@ st.write("""
 Goddav *skøge!*
 """)
 
-x = st.text_input("How big = cock?")
-st.write(f"din pik er {x} lang")
-is_clicked = st.button("click for bitches :eggplant:")
+filmNavn = st.text_input("søg film:")
+st.write(f"du har valgt {filmNavn}")
 
-PosterURL = findFilm('forest gump')['poster_path']
+PosterURL = findFilm(f'{filmNavn}')['poster_path']
+Overwiew = findFilm(f'{}')
 
-st.image(f'https://image.tmdb.org/t/p{PosterURL}', caption='Sunrise by the mountains')
+st.image(f'https://image.tmdb.org/t/p/w500{PosterURL}', caption=findFilm(f'{filmNavn}')['overwiew'])
 choice = st.radio("kan du lide denne film?", ["Ja","Nej","Har ikke set den"])
+is_clicked = st.button("Enter")
 
