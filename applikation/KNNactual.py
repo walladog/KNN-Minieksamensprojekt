@@ -14,6 +14,7 @@ class FilmListeKlasse:
             self.testFilm = Film(name,genres,rating,0)
             if self.addGenresToGenreDict(self.testFilm): #Tjek om der er nye genrer og tilføj dem.
                 self.generateRefinedGenres() #Hvis der er nye genrer skal de også tilføjes til alle de andre films refinedGenres-dicts.
+            #Vent ok fuck, testfilmen laver aldrig et refinedGenres dict. Det skal lige fikses.
         else: #Eksekveres hvis dette ikke er en testfilm.
             self.filmListe.append(Film(name,genres,rating,kanLide))
             self.addGenresToGenreDict(self.filmListe[-1])
@@ -41,34 +42,45 @@ class FilmListeKlasse:
                     film.refinedGenres[genre] = 1
                 else:
                     film.refinedGenres[genre] = 0
+        
+        
+        if self.testFilm != None:
+            for genre in self.genreDict.keys():
+                if int(genre) in self.testFilm.rawGenres:
+                    self.testFilm.refinedGenres[genre] = 1
+                else:
+                    self.testFilm.refinedGenres[genre] = 0
+
         self.addExtras() #tilføjer til sidst rating til koordinatsystemet.
 
     #Tilføjer rating til koordinatsystemet refinedGenres
     def addExtras(self):
         for film in self.filmListe: #Gå igennem alle film.
             film.refinedGenres['rating'] = film.rating / 10 
+        if self.testFilm != None:
+            self.testFilm.refinedGenres['rating'] = self.testFilm.rating / 10
 
-
+    #Finde hver film i filmListes afstand fra testfilmen og sætter deres attribut afstandFraTest lig resultatet.
     def findAfstande(self):
-        a = list(self.testFilm.refinedGenres.values())
+        testPunkt = list(self.testFilm.refinedGenres.values())
         for film in self.filmListe:
-            b = list(self.filmListe[1].refinedGenres.values())
-            self.afstande.append(euclidean)
+            b = list(film.refinedGenres.values())
+            film.afstandFraTest = (euclidean(testPunkt,b))
 
             
 
     
 
 
-
+#Denne her klasse er pretty much bare en container for en masse attributter.
 class Film:
     def __init__(self, name, genres, rating,kanLide):
         self.name = name #Filmens navn
         self.rawGenres = genres #liste over genrer denne film har.
-        self.rawGenresDict = {} 
         self.refinedGenres = {} #dict over alle genrer vi har set, samt om denne film har dem
         self.rating = rating #Gennemsnitlig rating. Værdier fra 0,1 til 1.
         self.kanLide = kanLide # 1 = kan lide, -1 = kan ikke lide, 0 = testfilm.
+        self.afstandFraTest = None #Afstanden til testfilmen.
            
          
     @staticmethod
