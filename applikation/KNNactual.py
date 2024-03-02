@@ -61,6 +61,7 @@ class FilmListeKlasse:
             self.testFilm.refinedGenres['rating'] = self.testFilm.rating / 10
 
     #Finde hver film i filmListes afstand fra testfilmen og sætter deres attribut afstandFraTest lig resultatet.
+    #Kaldes i metoden KNN()
     def findAfstande(self):
         testPunkt = list(self.testFilm.refinedGenres.values())
         for film in self.filmListe:
@@ -75,10 +76,11 @@ class FilmListeKlasse:
             for j in range(i+1 , len(self.filmListe)):
                 if self.filmListe[j].afstandFraTest < self.filmListe[min].afstandFraTest:
                     min = j        
-            (self.filmListe[i].afstandFraTest , self.filmListe[min].afstandFraTest) = ( self.filmListe[min].afstandFraTest , self.filmListe[i].afstandFraTest) 
+            (self.filmListe[i] , self.filmListe[min]) = ( self.filmListe[min] , self.filmListe[i]) 
 
+    #find testfilmens k nærmeste naboer samt om brugeren har bedømt dem positivt/negativt. Bedøm derefter denne film.
     def KNN(self,k):
-        if k % 2 == 0:
+        if k % 2 == 0: 
             print("k skal være et ulige tal")
             return
         elif len(self.filmListe) < k:
@@ -88,6 +90,8 @@ class FilmListeKlasse:
             print("Du skal bedømme mindst 1 film først.")
             return
         
+        #Afstandene findes og sorteres.
+        self.findAfstande()
         self.sorterfilmListe()
         forudsigelse = 0
 
@@ -111,7 +115,4 @@ class Film:
         self.kanLide = kanLide # 1 = kan lide, -1 = kan ikke lide, 0 = testfilm.
         self.afstandFraTest = None #Afstanden til testfilmen.
            
-         
-    @staticmethod
-    def genreDistance(movie1Genres,movie2Genres):
-        return
+
