@@ -68,6 +68,7 @@ class FilmListeKlasse:
             film.afstandFraTest = (euclidean(testPunkt,b))
 
     #Sorterer filmListe fra korteste afstand fra testpunktet til længste vha. selection sort.
+    #Kaldes i metoden KNN()
     def sorterfilmListe(self):
         for i in range(0,len(self.filmListe)-1):
             min = i
@@ -76,7 +77,28 @@ class FilmListeKlasse:
                     min = j        
             (self.filmListe[i].afstandFraTest , self.filmListe[min].afstandFraTest) = ( self.filmListe[min].afstandFraTest , self.filmListe[i].afstandFraTest) 
 
-    
+    def KNN(self,k):
+        if k % 2 == 0:
+            print("k skal være et ulige tal")
+            return
+        elif len(self.filmListe) < k:
+            print("k må ikke være større end antallet af film, du har bedømt.")
+            return
+        elif len(self.filmListe) == 0:
+            print("Du skal bedømme mindst 1 film først.")
+            return
+        
+        self.sorterfilmListe()
+        forudsigelse = 0
+
+        for i in range(k):
+            forudsigelse += self.filmListe[i].kanLide
+
+        forudsigelse = forudsigelse / abs(forudsigelse) #Normaliser til 1 eller -1
+        return forudsigelse
+
+        
+        
 
 
 #Denne her klasse er pretty much bare en container for en masse attributter.

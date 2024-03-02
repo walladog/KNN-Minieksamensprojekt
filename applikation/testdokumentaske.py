@@ -13,7 +13,7 @@ test1 = findFilm("the boy and the heron")
 
 filmgøj = FilmListeKlasse()
 
-filmgøj.addFilm(response['original_title'],response['genre_ids'],response['vote_average'],1)
+filmgøj.addFilm(response['original_title'],response['genre_ids'],response['vote_average'],-1)
 filmgøj.addFilm(response2['original_title'],response2['genre_ids'],response2['vote_average'],-1)
 
 filmgøj.addFilm(test1['original_title'],test1['genre_ids'],test1['vote_average'],0,True)
@@ -42,7 +42,12 @@ print(filmgøj.filmListe[0].afstandFraTest)
 print(filmgøj.filmListe[1].afstandFraTest)
 
 
-filmgøj.sorterfilmListe()
 
+
+
+
+svar = filmgøj.KNN(1)
 print(filmgøj.filmListe[0].afstandFraTest)
 print(filmgøj.filmListe[1].afstandFraTest)
+print(filmgøj.filmListe[0].name)
+print(svar)
