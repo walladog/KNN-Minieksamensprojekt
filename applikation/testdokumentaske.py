@@ -3,7 +3,7 @@
 from KNNactual import *
 from BetterMovieDB_API import *
 import numpy as np
-import scipy.spatial.distance as dist
+from scipy.spatial.distance import euclidean
 
 response = findFilm('forrest gump')
 response2 = findFilm('toy story')
@@ -12,8 +12,8 @@ response2 = findFilm('toy story')
 
 filmgøj = FilmListeKlasse()
 
-filmgøj.addFilm(response['original_title'],response['genre_ids'],response['vote_average'],response['vote_count'])
-filmgøj.addFilm(response2['original_title'],response2['genre_ids'],response2['vote_average'],response2['vote_count'])
+filmgøj.addFilm(response['original_title'],response['genre_ids'],response['vote_average'],1)
+filmgøj.addFilm(response2['original_title'],response2['genre_ids'],response2['vote_average'],-1)
 
 
 filmgøj.generateRefinedGenres()
@@ -33,4 +33,4 @@ print(filmgøj.genreDict)
 
 # print(np.sum([a,b]))
 
-print(dist.euclidean(a,b))
+print(euclidean(a,b))
