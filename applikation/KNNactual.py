@@ -67,7 +67,14 @@ class FilmListeKlasse:
             b = list(film.refinedGenres.values())
             film.afstandFraTest = (euclidean(testPunkt,b))
 
-            
+    #Sorterer filmListe fra korteste afstand fra testpunktet til længste vha. selection sort.
+    def sorterfilmListe(self):
+        for i in range(0,len(self.filmListe)-1):
+            min = i
+            for j in range(i+1 , len(self.filmListe)):
+                if self.filmListe[j].afstandFraTest < self.filmListe[min].afstandFraTest:
+                    min = j        
+            (self.filmListe[i].afstandFraTest , self.filmListe[min].afstandFraTest) = ( self.filmListe[min].afstandFraTest , self.filmListe[i].afstandFraTest) 
 
     
 

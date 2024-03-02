@@ -35,8 +35,14 @@ print(a)
 
 
 
-print(euclidean(list(filmgøj.testFilm.refinedGenres.values()),a))
+
 
 filmgøj.findAfstande()
+print(filmgøj.filmListe[0].afstandFraTest)
+print(filmgøj.filmListe[1].afstandFraTest)
+
+
+filmgøj.sorterfilmListe()
+
 print(filmgøj.filmListe[0].afstandFraTest)
 print(filmgøj.filmListe[1].afstandFraTest)
