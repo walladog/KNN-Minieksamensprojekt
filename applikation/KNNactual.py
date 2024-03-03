@@ -1,5 +1,13 @@
 from scipy.spatial.distance import euclidean
 
+# Tutorial til at bruge denne fil.
+# Et eksempel på korrekt brug af denne film kan ses i filen 'testdokumentaske.py'
+# Lav et FilmListeKlasse-objekt.
+# brug metoden addFilm() sammen med responsen fra dit API-kald til at tilføje film og deres bedømmelser.
+# brug igen metoden addFilm() til at tilføje en testfilm (husk at sætte kanLide = 0 og test = True)
+# Kald metoden generateRefinedGenres().
+# Kald metoden KNN() med et ulige tal som input. outputtet vil være enten 1 eller -1, om algoritmen tror brugeren kan lide filmen eller ej.
+
 
 class FilmListeKlasse:
     def __init__(self):

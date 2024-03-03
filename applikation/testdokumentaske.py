@@ -29,11 +29,6 @@ filmgøj.addFilm(test1['original_title'],test1['genre_ids'],test1['vote_average'
 
 filmgøj.generateRefinedGenres()
 
-
-
-
-
-
 svar = filmgøj.KNN(3)
 
 for i in range(5):
