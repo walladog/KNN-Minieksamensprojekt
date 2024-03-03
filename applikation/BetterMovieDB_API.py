@@ -27,7 +27,5 @@ def findFilm(filmName):
 
 # Print the response
 #print(json.dumps(response.json(), ensure_ascii=False).encode('utf8'))
-#Note fra ASKE: Jeg aner ikke hvad fuck det her er, men det er irriterende, så jeg har slettet. Fuck dig Artem :)
+#Note fra ASKE: Jeg aner ikke hvad det her er, men det er irriterende, så jeg har slettet det.
 
-#print(response.json()['results'][0]['original_title'])
-#print(response)

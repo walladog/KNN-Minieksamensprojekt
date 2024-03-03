@@ -22,7 +22,6 @@ class FilmListeKlasse:
             self.testFilm = Film(name,genres,rating,0)
             if self.addGenresToGenreDict(self.testFilm): #Tjek om der er nye genrer og tilføj dem.
                 self.generateRefinedGenres() #Hvis der er nye genrer skal de også tilføjes til alle de andre films refinedGenres-dicts.
-            #Vent ok fuck, testfilmen laver aldrig et refinedGenres dict. Det skal lige fikses.
         else: #Eksekveres hvis dette ikke er en testfilm.
             self.filmListe.append(Film(name,genres,rating,kanLide))
             self.addGenresToGenreDict(self.filmListe[-1])
@@ -51,7 +50,7 @@ class FilmListeKlasse:
                 else:
                     film.refinedGenres[genre] = 0
         
-        
+        #Hvis der er en testfilm, skal dens genreliste også gennemgås.
         if self.testFilm != None:
             for genre in self.genreDict.keys():
                 if int(genre) in self.testFilm.rawGenres:
@@ -85,7 +84,7 @@ class FilmListeKlasse:
                 if self.filmListe[j].afstandFraTest < self.filmListe[min].afstandFraTest:
                     min = j        
             (self.filmListe[i] , self.filmListe[min]) = ( self.filmListe[min] , self.filmListe[i]) 
-
+    
     #find testfilmens k nærmeste naboer samt om brugeren har bedømt dem positivt/negativt. Bedøm derefter denne film.
     def KNN(self,k):
         if k % 2 == 0: 
@@ -113,7 +112,7 @@ class FilmListeKlasse:
         
 
 
-#Denne her klasse er pretty much bare en container for en masse attributter.
+#Denne her klasse er stort set bare en container for en masse attributter.
 class Film:
     def __init__(self, name, genres, rating,kanLide):
         self.name = name #Filmens navn
